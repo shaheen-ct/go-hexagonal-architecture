@@ -1,0 +1,49 @@
+# Where are all the schema files located? globs are supported eg  src/**/*.graphqls
+schema:
+  - api/graph/schema/*.graphql
+
+exec:
+  filename: internal/graph/generated/generated.go
+  package: generated
+
+model:
+  filename: api/graph/models/models.go
+  package: models
+
+
+resolver:
+  layout: follow-schema
+  package: resolvers
+  filename_template: "{name}.resolvers.go"
+  type: Resolver
+
+autobind:
+#  - "github/ahmadessamshahin/graph/gqlgen-tutorial/graph/models"
+
+# This section declares type mapping between the GraphQL and go type systems
+#
+# The first line in each type will be used as defaults for resolver arguments and
+# modelgen, the others will be allowed when binding to fields. Configure them to
+# your liking
+models:
+  User:
+    model: github.com/shaheen-ct/go-hexagonal-architecture/api/graph/models.User
+    fields:
+      meetups:
+        resolver: true
+  Meetup:
+    model: github.com/shaheen-ct/go-hexagonal-architecture/api/graph/models.Meetup
+    fields:
+      user:
+        resolver: true
+  ID:
+    model:
+      - github.com/99designs/gqlgen/graph.ID
+      - github.com/99designs/gqlgen/graph.Int
+      - github.com/99designs/gqlgen/graph.Int64
+      - github.com/99designs/gqlgen/graph.Int32
+  Int:
+    model:
+      - github.com/99designs/gqlgen/graph.Int
+      - github.com/99designs/gqlgen/graph.Int64
+      - github.com/99designs/gqlgen/graph.Int32

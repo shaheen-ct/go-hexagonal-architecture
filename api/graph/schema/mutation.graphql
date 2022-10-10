@@ -1,0 +1,12 @@
+scalar Void
+
+type Mutation{
+#    Meetup
+    createMeetUp(input: MeetupInput!): Meetup!
+#   User
+    createUser(input: UserInput!): User!
+    getUser(input: String!): User!
+    updateUser(input: UserInput!):User!
+    deleteUser(id:String):Void
+}
+

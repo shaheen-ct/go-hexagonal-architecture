@@ -1,0 +1,12 @@
+type Meetup {
+  id: String!
+  name: String!
+  description: String!
+  user: User!
+}
+
+input MeetupInput{
+  id: String
+  name: String!
+  description: String!
+}

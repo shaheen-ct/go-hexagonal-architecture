@@ -1,0 +1,5 @@
+#Database settings
+pgDatabase:
+  url: "mongodb://localhost:27017"
+  db: "product"
+  timeout: 5
